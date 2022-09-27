@@ -4,7 +4,7 @@ import Students from "./components/students";
 function App() {
   return (
     <div className="App">
-      Hello from Techtonica
+      Animal Sighting
       <Students />
     </div>
   );
