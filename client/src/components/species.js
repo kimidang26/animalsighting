@@ -19,13 +19,14 @@ function Species() {
   };
 
   return (
+    
     <div className="species">
       <h2> List of Species </h2>
       <ul>
         {species.map((species, index) => (
           <li key={index}>
             {" "}
-            Common Name: {species.common_name} Scientific Name: {species.scientific_name} Population: {species.population} Conservation Status: {species.conservation_status} Created On: {species.created_on}
+            Common Name: {species.common_name} Scientific Name: {species.scientific_name} Population: {species.population} Conservation Status: {species.conservation_status} Created On: {species.created_on.slice(0,10)}
           </li>
         ))}
       </ul>

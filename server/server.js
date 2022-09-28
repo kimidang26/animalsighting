@@ -9,6 +9,7 @@ import speciesRouter from "./routes/species.js";
 import individualsRouter from "./routes/individuals.js"
 import sightingsRouter from "./routes/sightings.js"
 
+
 const app = express();
 const PORT = 2626;
 
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 app.use('/species', speciesRouter);
 app.use('/individuals', individualsRouter);
 app.use('/sightings', sightingsRouter);
+
 
 // creates an endpoint for the route /api
 app.get('/', (req, res) => {
