@@ -7,9 +7,9 @@ import Species from "./components/animaldata/species.js";
 function App() {
   return (
     <div className="App">
-      <h1>Animal Sightings</h1>
       <Router>
         <NavigationBar />
+        <h1>Welcome to the Animal Sightings Page</h1>
           <Routes>
               <Route path='/species' element={<Species />}></Route>
               <Route path='/' element={<Sightings />}></Route>

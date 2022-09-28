@@ -22,14 +22,38 @@ function Species() {
     
     <div className="species">
       <h2> List of Species </h2>
-      <ul>
-        {species.map((species, index) => (
-          <li key={index}>
-            {" "}
-            Common Name: {species.common_name} Scientific Name: {species.scientific_name} Population: {species.population} Conservation Status: {species.conservation_status} Created On: {species.created_on.slice(0,10)}
-          </li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+
+          <tr>
+            <th>Common Name</th>
+            <th>Scientific Name</th>
+            <th>Population</th>
+            <th>Conservation Status</th>
+            <th>Created On</th>
+          </tr>
+
+        </thead>
+      </table>
+
+  
+
+        {species.map((animal,index) => {
+          return (
+            <tr key={index}>
+              
+              <td>{animal.common_name}</td>
+              <td>{animal.scientific_name}</td>
+              <td>{animal.population}</td>
+              <td>{animal.conservation_status}</td>
+              <td>{animal.created_on.slice(0,10)}</td>
+              
+            </tr>
+          
+          );
+        })}
+        
+
       {/* <Form addStudent={addStudent} /> */}
     </div>
   );
