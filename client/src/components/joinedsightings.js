@@ -23,11 +23,12 @@ function Sightings() {
   return (
     
     <div className="sightings">
+      <h1>List of Sightings</h1>
       <table>
         <thead>
           <tr>
             <th>Sightings ID</th>
-            <th>Date/Time</th>
+            <th>Date/Time of Seen</th>
             <th>Nickname</th>
             <th>Common Name</th>
             <th>Health</th>

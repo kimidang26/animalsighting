@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Form from "./form";
+import Form from "../form";
 
 function Species() {
   const [species, setSpecies] = useState([]);

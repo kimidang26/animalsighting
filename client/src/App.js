@@ -1,13 +1,22 @@
 import "./App.css";
-import Species from "./components/species.js";
 import Sightings from "./components/joinedsightings";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NavigationBar from "./components/NavBar.js";
+import Species from "./components/animaldata/species.js";
 
 function App() {
   return (
     <div className="App">
-      Animal Sighting
-      <Sightings />
-      <Species />
+      <h1>Animal Sightings</h1>
+      <Router>
+        <NavigationBar />
+          <Routes>
+              <Route path='/species' element={<Species />}></Route>
+              <Route path='/' element={<Sightings />}></Route>
+          </Routes>
+      </Router>
+
+      {/* <Sightings /> */}
     </div>
   );
 }
