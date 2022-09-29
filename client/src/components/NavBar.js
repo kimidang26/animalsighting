@@ -11,6 +11,10 @@ const NavigationBar = () => {
         <br></br>
             <Link to="/species"> Species Information</Link>
         <br></br>
+        <br></br>
+            <Link to="/Individuals"> Individual Species Information</Link>
+        <br></br>
+        
             {/* <Routes>
               <Route path='/species' element={<Species />}></Route>
           </Routes> */}
