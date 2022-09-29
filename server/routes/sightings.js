@@ -24,6 +24,18 @@ const router = express.Router();
     }
   });
 
+  //   ******DELETE STUFF***************
+router.delete('/:id', async (req, res) => {
+  // : acts as a placeholder
+  const sightId = req.params.id;
+  try {
+    await db.none('DELETE FROM species WHERE id=$1', [sightId]);
+    res.send({ status: 'success' });
+  } catch (e) {
+    return res.status(400).json({ e });
+  }
+});
+
 
 
   export default router;

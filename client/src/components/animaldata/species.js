@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Form from "../form";
 import DeleteAnimal from "./deletespecies";
-// import trashicon from "./trashicon.png"
+import trash from "./trash.jpeg";
+
 
 function Species() {
   const [species, setSpecies] = useState([]);
@@ -12,7 +13,7 @@ function Species() {
   const [date_created, setDate_created] = useState([]);
 
 
-  // *************POST-UPDATE THE DATA****************
+  // *************POST-input new data****************
 // Form is empty
   const handleAddFormChange = async (e) => {
     e.preventDefault();
@@ -100,9 +101,9 @@ const handleDeleteAnimal = async (handleDeleteAnimalCallback) => {
               <td>{animal.scientific_name}</td>
               <td>{animal.population}</td>
               <td>{animal.conservation_status}</td>
-              <td>{animal.created_on}</td>
+              <td>{new Date(animal.created_on).toLocaleString()}</td>
               {/* <td><img src={trashicon} alt="Trash Can" onClick={() => handleDeleteAnimal(animal.id)}/></td> */}
-              <td><button onClick={() => handleDeleteAnimal(animal.id)}>DELETE</button></td>
+              <td><img src={trash} className="trash_icon" onClick={() => handleDeleteAnimal(animal.id)}/></td>
             </tr>
           
           );
@@ -115,7 +116,7 @@ const handleDeleteAnimal = async (handleDeleteAnimalCallback) => {
 
         <h2>Add A Species</h2>
         <form id="new-animal" action="#" onSubmit={handleAddFormChange}> 
-          <input type="text" name="id" required="required" placeholder="enter id" onChange={(e) => setId(e.target.value)}/>
+      
           <input type="text" name="common_name" required="required" placeholder="enter common name" onChange={(e) => setCommon_Name(e.target.value)}/>
           <input type="text" name="scientific_name" required="required" placeholder="enter scientific name" onChange={(e) => setScientific_name(e.target.value)}/>
           <input type="text" name="population" required="required" placeholder="enter size" onChange={(e) => setPopulation(e.target.value)}/>

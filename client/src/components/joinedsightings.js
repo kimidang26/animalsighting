@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-
+import DeleteSighting from "./deletesighting.js";
+import trash from "./animaldata/trash.jpeg"
 
 function Sightings() {
   const [individuals, setIndividuals] = useState([]);
@@ -20,6 +21,17 @@ function Sightings() {
     setSightings((sightings) => [...sightings, newSightings]);
   };
 
+//**************Delete 1 Sighting from sighting joined table**************/
+
+const handleDeleteSighting = async (handleDeleteSightingCallback) => {
+  const response = await fetch(`http://localhost:2626/sightings/recent/${handleDeleteSightingCallback}`, {
+    method: 'DELETE',
+  })
+  await response.json();
+  const deleteSightingFunction = sightings.filter((sight) => sight.id !== handleDeleteSightingCallback);
+  setSightings(deleteSightingFunction);
+}
+
   return (
     
     <div className="sightings">
@@ -39,29 +51,18 @@ function Sightings() {
           {sightings.map((sight, index) => {
             return (
               <tr key = {index}>
-                 <td>{sight.date_time.slice(0,10)}</td>
+                 <td>{sight.id}</td>
                 <td>{sight.date_time.slice(0,10)}</td>
                 <td>{sight.nick_name}</td>
                 <td>{sight.common_name}</td>
                 <td>{sight.healthy.toString() === "true" ? "Healthy" : "Sick"}</td>
                 <td>{sight.location}</td>
+                <td><img src={trash} className="trash_icon" onClick={() => handleDeleteSighting(sight.id)}/></td>
               </tr>
             );
           })}
         </tbody>
       </table>
-
-
-
-      {/* <h2> List of Sightings </h2>
-      <ul>
-        {sightings.map((sightings, index) => (
-          <li key={index}>
-            {" "}
-            Common Name: {sightings.id} Scientific Name: {sightings.date_time} Population: {individuals.nick_name} Conservation Status: {species.common_name} Created On: {sightings.healthy}  Created On: {sightings.location} 
-          </li>
-        ))}
-      </ul> */}
 
     </div>
   );
