@@ -52,7 +52,31 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// *************PUT -Update the species***********
 
+router.put('/:speciesId', async (req,res) => {
+  //this will be the id that i want to find in db
+  const speciesId = req.params.speciesId
+  const updatedSpecies = {
+    id: req.body.id,
+      common_name: req.body.common_name,
+      scientific_name: req.body.scientific_name,
+      population: req.body.population,
+      conservation_status: req.body.conservation_status,
+      created_on: req.body.created_on,
+  }
+  const query = `UPDATE species SET common_name=$1, scientific_name=$2, population=$3, conservation_status=$4 , created_on=$5 WHERE id=${speciesId} RETURNING *`;
+  const values = [updatedSpecies.common_name, updatedSpecies.scientific_name, updatedSpecies.population, updatedSpecies.conservation_status, updatedSpecies.created_on];
+  try {
+    const updated = await db.query(query, values);
+    console.log(updated.rows[0]);
+    res.send(updated.rows[0]);
+  } catch(e){
+    console.log(e);
+    return res.status(400).json({e})
+  }
+
+})
 
 
   export default router;
