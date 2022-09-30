@@ -12,6 +12,22 @@ function Species() {
   const [population, setPopulation] = useState([]);
   const [date_created, setDate_created] = useState([]);
 
+  //****************Fetches/gets Species Table***********/
+  useEffect(async () => {
+    await fetch("http://localhost:2626/species")
+      .then((response) => response.json())
+      .then((species) => {
+            setSpecies(species);
+          });
+  }, []);
+
+  const addSpecies = (newSpecies) => {
+    //console.log(newStudent);
+    //postStudent(newStudent);
+    setSpecies((species) => [...species, newSpecies]);
+  };
+
+
 
   // *************POST-input new data****************
 // Form is empty
@@ -44,21 +60,6 @@ function Species() {
 
   };
 
-
-  //****************Fetches/gets Species Table***********/
-  useEffect(() => {
-    fetch("http://localhost:2626/species")
-      .then((response) => response.json())
-      .then((species) => {
-            setSpecies(species);
-          });
-  }, []);
-
-  const addSpecies = (newSpecies) => {
-    //console.log(newStudent);
-    //postStudent(newStudent);
-    setSpecies((species) => [...species, newSpecies]);
-  };
 
 
 //**************Delete 1 Animal from Species Table**************/
@@ -117,10 +118,10 @@ const handleDeleteAnimal = async (handleDeleteAnimalCallback) => {
         <h2>Add A Species</h2>
         <form id="new-animal" action="#" onSubmit={handleAddFormChange}> 
       
-          <input type="text" name="common_name" required="required" placeholder="enter common name" onChange={(e) => setCommon_Name(e.target.value)}/>
-          <input type="text" name="scientific_name" required="required" placeholder="enter scientific name" onChange={(e) => setScientific_name(e.target.value)}/>
-          <input type="text" name="population" required="required" placeholder="enter size" onChange={(e) => setPopulation(e.target.value)}/>
-          <input type="text" name="date_created" required="required" placeholder="YYYY-MM-DD" onChange={(e) => setDate_created(e.target.value)}/>
+          <input type="text" name="common_name" required="required" placeholder="enter common name" value={common_name} onChange={(e) => setCommon_Name(e.target.value)}/>
+          <input type="text" name="scientific_name" required="required" placeholder="enter scientific name" value={scientific_name} onChange={(e) => setScientific_name(e.target.value)}/>
+          <input type="text" name="population" required="required" placeholder="enter size" value={population} onChange={(e) => setPopulation(e.target.value)}/>
+          <input type="text" name="date_created" required="required" placeholder="YYYY-MM-DD" value={date_created} onChange={(e) => setDate_created(e.target.value)}/>
 
           <button type="submit" value="Add"> Add Species</button>
         </form>
