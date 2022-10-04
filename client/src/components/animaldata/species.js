@@ -27,6 +27,16 @@ function Species() {
     setSpecies((species) => [...species, newSpecies]);
   };
 
+// Edit Animal
+
+const handleEditAnimal = async (animal) => {
+  setCommon_Name(animal.common_name);
+  setScientific_name(animal.scientific_name);
+  setPopulation(animal.population);
+  setDate_created(animal.date_created);
+}
+  
+
 
 
   // *************POST-input new data****************
@@ -104,6 +114,7 @@ const handleDeleteAnimal = async (handleDeleteAnimalCallback) => {
               <td>{animal.conservation_status}</td>
               <td>{new Date(animal.created_on).toLocaleString()}</td>
               {/* <td><img src={trashicon} alt="Trash Can" onClick={() => handleDeleteAnimal(animal.id)}/></td> */}
+              <td><button onClick={() => handleEditAnimal(animal)}>Edit</button></td>
               <td><img src={trash} className="trash_icon" onClick={() => handleDeleteAnimal(animal.id)}/></td>
             </tr>
           
