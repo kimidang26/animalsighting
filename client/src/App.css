@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;600&family=Quicksand:wght@500&display=swap');
 .App {
   text-align: center;
+  background-color:pink;
 }
 
 .App-logo {
@@ -13,6 +15,7 @@
   }
 }
 
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -22,10 +25,50 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-size: 20px;
 }
+.navigation{
+  font-size: 20px;
+  color:white;
+  font-family: 'Josefin Sans', sans-serif;
+
+} 
+
+h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+}
+
 
 .App-link {
   color: #61dafb;
+}
+
+.species, table, th, td{
+  border: 1px solid black;
+  border-radius: 10px;
+  border-color: white;
+  padding: 15px;
+  font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.sightings{
+  font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.individuals{
+  font-family: 'Josefin Sans', sans-serif;
+
+}
+
+
+
+.trash_icon{
+  height: 10%;
+  width:10%;
 }
 
 @keyframes App-logo-spin {
